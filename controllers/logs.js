@@ -3,6 +3,7 @@ const axios = require('axios')
 
 module.exports = {
     index,
+    new: newLog,
     
 }
 
@@ -17,5 +18,11 @@ function index(req, res) {
     })
   }
 
-
+  function newLog(req, res) {
+    res.render("logs/new", {
+      title: "Show Logs",
+      user: req.user,
+      results: null
+    })
+  }
 
