@@ -1,8 +1,9 @@
-const Game = require('../models/game')
+const Log = require('../models/log')
 const axios = require('axios')
 
 module.exports = {
     index,
+    
 }
 
 function index(req, res) {
