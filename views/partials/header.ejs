@@ -30,11 +30,18 @@
       href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
       type="text/css"
     />
+    
 
     <title><%= title %></title>
   </head>
   <body>
     <nav>
+    <ul>
+        <a href="/">HOME</a>
+        <a href="/logs/new" <%- title === 'Add Travel Log' ? 'class="active"' : '' %>>ADD TRAVEL LOG</a>
+        <a href="/logs" <%- title === 'All Trips' ? 'class="active"' : '' %>>ALL TRAVEL LOGS</a>
+        <a href="/map/index" <%- title === '' ? 'class="active"' : '' %>>MAP</a>
+    </ul>
       <ul>
         <% if (user) { %>
         <li>
