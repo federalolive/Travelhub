@@ -1,6 +1,13 @@
 <%- include('../partials/header') %>
 
-
+<div id="map"></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZmVkZXJhbG9saXZlIiwiYSI6ImNraXE2ZjM0bDFldWgycXBmZHNmczJvbjkifQ.41LdKiQObM-Lk8WvVG6ozg';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v11'
+});
+</script>
 
 
 <%- include('../partials/footer') %>
