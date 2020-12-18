@@ -1,4 +1,4 @@
-const Log = require('../models/log')
+const Map = require('../models/map')
 const axios = require('axios')
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
 function index(req, res) {
     Log.find({ favoritedBy: req.user._id, user : req.user })
     .then((maps) => {
-      res.render('maps/index', {
+      res.render('maps/', {
         title: "Travel Log",
         user: req.user,
         maps
@@ -29,7 +29,7 @@ function index(req, res) {
   }
 
   function newLog(req, res) {
-    res.render("logs/new", {
+    res.render("maps/", {
       title: "Show Logs",
       user: req.user,
       results: null

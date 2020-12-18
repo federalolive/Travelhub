@@ -3,7 +3,6 @@ const axios = require('axios')
 
 module.exports = {
     index,
-    new: newMarker,
     new: newLog,
     
 }
@@ -19,5 +18,9 @@ function index(req, res) {
     })
   }
 
-
+function newLog(req, res) {
+  Log.create(req.body, function(err, log) {
+    res.redirect('/logs') 
+  })
+}
 
