@@ -1,8 +1,11 @@
 const router = require("express").Router();
-const mapsRouter = require('../controllers/maps')
+const mapsCtrl = require('../controllers/maps')
 
-router.get("/", function (req, res) {
-  res.render("index", { title: "Home Page", user: req.user ? req.user : null });
-});
+router.get('/', isLoggedIn, mapsCtrl.index)
+router.get('/', isLoggedIn, mapsCtrl.new)
 
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) return next();
+    res.redirect("/auth/google");
+  }
 module.exports = router;

@@ -9,12 +9,12 @@ module.exports = {
 }
 
 function index(req, res) {
-    Log.find({ favoritedBy: req.user._id })
-    .then((games) => {
+    Log.find({ favoritedBy: req.user._id, user : req.user })
+    .then((maps) => {
       res.render('maps/index', {
         title: "Travel Log",
         user: req.user,
-        games
+        maps
       })
     })
   }
