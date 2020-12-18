@@ -1,7 +1,8 @@
+const router = require("express").Router();
 const mapsCtrl = require('../controllers/maps')
 
-router.get('/', isLoggedIn, mapsCtrl.index)
-router.get('/new', isLoggedIn, mapsCtrl.new)
+router.get('/index', isLoggedIn, mapsCtrl.index)
+router.get('/', isLoggedIn, mapsCtrl.new)
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();

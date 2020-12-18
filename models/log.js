@@ -38,6 +38,4 @@ const logSchema = new Schema({
   timestamps: true,
 });
 
-const Log = mongoose.model('Log', logSchema);
-
-module.exports = Log;
+module.exports = mongoose.model("log", logSchema);

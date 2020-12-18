@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const logsCtrl = require('../controllers/logs')
 
-router.get('/', isLoggedIn, logsCtrl.index)
+router.get('/index', isLoggedIn, logsCtrl.index)
 router.get('/', isLoggedIn, logsCtrl.new)
 
 function isLoggedIn(req, res, next) {

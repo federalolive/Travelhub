@@ -21,7 +21,7 @@ require("./config/passport");
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const logsRouter = require("./routes/logs")
-const mapsRouter = require("/routes/maps")
+const mapsRouter = require("./routes/maps")
 
 const app = express();
 
