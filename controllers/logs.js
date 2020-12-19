@@ -17,7 +17,7 @@ function newLog(req, res) {
   function index(req, res) {
     Log.find({ favoritedBy: req.user._id })
     .then((logs) => {
-      res.render('log/index', {
+      res.render('logs', {
         title: "Travel Logs",
         user: req.user,
         logs
