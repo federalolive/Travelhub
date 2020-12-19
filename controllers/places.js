@@ -19,7 +19,7 @@ function index(req, res) {
   }
 
 function newPlace(req, res) {
-  Log.create(req.body, function(err, place) {
+  Place.create(req.body, function(err, place) {
     res.redirect('/places') 
   })
 }
