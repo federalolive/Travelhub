@@ -1,24 +1,27 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const requiredNumber = {
-  type: Number,
-  required: true,
-};
+const geoCoder = require('../utils/geocoder');
 
-const logSchema = new Schema({
-  latitude: {
-    ...requiredNumber,
-    min: -90,
-    max: 90,
-  },
-  longitude: {
-    ...requiredNumber,
-    min: -180,
-    max: 180,
-  },
-}, {
-  timestamps: true,
+const PlaceSchema = new mongoose.Schema({
+    address: {
+        type: String,
+        required: [true, 'Please add an address']
+    },
+    location: {
+        type: {
+            type: String,
+            enum: ['Point']
+        },
+        coordinates: {
+            type: [Number],
+            index: '2dsphere'
+        },
+        formattedAddress: String
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    }
 });
-
     module.exports = mongoose.model("map", logSchema);

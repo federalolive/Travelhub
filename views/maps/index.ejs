@@ -19,7 +19,35 @@
                 zoom: 13,
             });
             
-            
+            map.on('load', () => {
+            map.on('click', (e) => {
+                addMarker(map.unproject(e.point))
+            })
+        })
+
+        let marker;
+        let placeName;
+        let popup;
+
+        function addMarker(coords) {
+            // We remove the marker and popup if there is already a marker on our map
+            if (marker) {
+                marker.remove();
+                popup.remove();
+            }
+            // Here we query the Mapbox Geocoder API for a place name, and add our marker and popup to the map once we receive a response
+            client.geocodeReverse({ latitude: coords.lat, longitude: coords.lng }, (err, res) => {
+                placeName = res.features[0].place_name;
+                marker = new mapboxgl.Marker()
+                    .setLngLat(coords)
+                    .addTo(map);
+                popup = new mapboxgl.Popup({ closeButton: false, anchor: 'top' })
+                    .setLngLat(coords)
+                    .setHTML(`<p>${placeName}</p>`)
+                    .addTo(map);
+            });
+        }
+    </script>
 
             map.addControl(
                 new MapboxGeocoder({

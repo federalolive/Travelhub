@@ -15,7 +15,27 @@ body {
 
 #map {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 50px;
+  bottom: 50px;
   width: 100%;
+}
+
+p {
+  color: #666;
+  text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.75),
+  1px -1px 0 rgba(255, 255, 255, 0.75),
+  -1px 1px 0 rgba(255, 255, 255, 0.75),
+  1px 1px 0 rgba(255, 255, 255, 0.75);
+  font-size: 16px;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+  border-bottom-color: #e0dfdf;
+  opacity: 0.9;
+}
+
+.mapboxgl-popup-content {
+  background: #e0dfdf;
+  opacity: 0.9;
+  box-shadow: 3px 4px 12px #545454
 }
