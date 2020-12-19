@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const logEntrySchema = new Schema({
+const logSchema = new Schema({
     title: {
       type: String,
       required: true,
@@ -23,4 +23,4 @@ const logEntrySchema = new Schema({
     timestamps: true,
   });
 
-module.exports = mongoose.model('LogEntry', logEntrySchema)
+module.exports = mongoose.model('Log', logSchema)
