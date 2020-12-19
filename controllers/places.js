@@ -9,7 +9,7 @@ module.exports = {
 }
 
 function index(req, res) {
-    Log.find({ favoritedBy: req.user._id })
+    Place.find({ favoritedBy: req.user._id })
     .then((places) => {
       res.render('places/index', {
         title: "Travel Log",
