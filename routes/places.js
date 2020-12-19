@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const placesCtrl = require('../controllers/places')
 
-router.get('/index', isLoggedIn, placesCtrl.index)
-router.get('/', isLoggedIn, placesCtrl.new)
+router.get('/', isLoggedIn, placesCtrl.index)
+router.get('/places', isLoggedIn, placesCtrl.getPlace)
+router.post('/places', isLoggedIn, placesCtrl.addPlace)
+
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
