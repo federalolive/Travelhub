@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const logsCtrl = require('../controllers/logs')
+const placesCtrl = require('../controllers/places')
 
-router.get('/index', isLoggedIn, logsCtrl.index)
-router.get('/', isLoggedIn, logsCtrl.new)
+router.get('/index', isLoggedIn, placesCtrl.index)
+router.get('/', isLoggedIn, placesCtrl.new)
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
