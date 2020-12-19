@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const geoCoder = require('../utils/geocoder');
 const Schema = mongoose.Schema;
 
 const placeSchema = new Schema({
