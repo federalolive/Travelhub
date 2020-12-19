@@ -5,6 +5,7 @@ module.exports = {
     index,
     getPlace,
     addPlace,
+    getPlaces
     
 }
 
@@ -48,4 +49,18 @@ async function addPlace(req, res, next) {
   }
 };
  
+async function getPlaces(req, res, next) {
+  try {
+    const places = await Place.find();
+
+    return res.status(200).json({
+        succes: true,
+        count: places.length,
+        data: places
+    })
+} catch (err) {
+    console.log(err);
+    res.status(500);
+  }
+}
 
