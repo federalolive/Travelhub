@@ -7,7 +7,7 @@ module.exports = {
 
 function newLogEntry(req, res) {
     res.render("logentrys/new", {
-      title: "Log Entries",
+      title: "New Log Entry",
       user: req.user,
       results: null
     })
