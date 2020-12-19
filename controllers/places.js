@@ -3,7 +3,7 @@ const axios = require('axios')
 
 module.exports = {
     index,
-    new: newPlace,
+    addPlace,
     
 }
 
@@ -18,9 +18,18 @@ function index(req, res) {
     })
   }
 
-function newPlace(req, res) {
-  Place.create(req.body, function(err, place) {
-    res.redirect('/places') 
-  })
-}
+async function addPlace(req, res, next) {
+  try {
+    const place = await Place.create(req.body);
+
+    return res.status(200).json({
+        success: true,
+        data: place
+    });
+} catch (err) {
+    console.log(err);
+    res.status(500);
+  }
+};
+ 
 
