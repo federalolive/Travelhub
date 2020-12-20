@@ -56,6 +56,7 @@ app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/places", placesRouter);
 app.use("/logs", logsRouter);
+app.use("/comments", commentsRouter)
 
 
 // catch 404 and forward to error handler
