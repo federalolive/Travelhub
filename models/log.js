@@ -1,5 +1,15 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const commentSchema = new Schema(
+  {
+    commenter: String,
+    commenterPhoto: String,
+    content: String,
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const logSchema = new Schema({
     title: {

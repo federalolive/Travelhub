@@ -22,6 +22,7 @@ const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const placesRouter = require("./routes/places")
 const logsRouter = require("./routes/logs")
+const commentsRouter = require('./routes/comments')
 
 
 const app = express();
