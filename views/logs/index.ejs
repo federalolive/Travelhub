@@ -7,9 +7,9 @@
     <!-- INSERT CODE FOR IMAGE HERE ONCE THAT CODE HAS BEEN WRITTEN -->
     <div class="card-body">
         <h5 class="card-title"><%= log.title %> </h5>
-        <p class="card-text">Destination: <%= log.released.toLocaleString().split(',')[0] %></p>
+        <p class="card-text">Destination: <%= log.destination%></p>
         <p class="card-text">Date of Trip: <%= log.visitdate ? log.visitdate : 'N/A' %></p>
-        <a href="/logs/<%= log.slug %>" class="btn btn-primary">Details</a>
+        <a href="/logs/<%= log._id %>" class="btn btn-primary">Details</a>
     </div>
   </div>
 <% }) %>

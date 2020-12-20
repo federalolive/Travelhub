@@ -3,7 +3,8 @@ const logsCtrl = require('../controllers/logs')
 
 router.get('/new', isLoggedIn, logsCtrl.new)
 router.get('/', isLoggedIn, logsCtrl.index)
-router.post('/logs', isLoggedIn, logsCtrl.create)
+router.post('/', isLoggedIn, logsCtrl.create)
+router.get('/:id', isLoggedIn, logsCtrl.show)
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();

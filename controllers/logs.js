@@ -17,7 +17,7 @@ function newLog(req, res) {
   }
 
   function index(req, res) {
-    Log.find({ favoritedBy: req.user._id })
+    Log.find({})
     .then((logs) => {
       res.render('logs/index', {
         title: "Travel Logs",
@@ -32,9 +32,16 @@ function newLog(req, res) {
         if (req.body[key] === '') delete req.body[key]
     }
     const log = new Log(req.body)
+    console.log(log)
     log.save(function(err) {
-    if (err){ return res.redirect('/logs/new')} 
+    if (err){ console.log(err) }
     res.redirect(`/logs/${log._id}`)
   })
 }
 
+    function show(req, res) {
+  Log.findById(req.params.id,  function(err, log) {
+    console.log(log)
+    res.render('logs/show', {title: 'Log Entry', user:req.user, log})
+  })
+}

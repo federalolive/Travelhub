@@ -8,7 +8,6 @@ const logSchema = new Schema({
     },
     destination: String,
     description: String,
-    comments: String,
     image: String,
     rating: {
       type: Number,
