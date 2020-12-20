@@ -4,6 +4,7 @@ const axios = require('axios')
 module.exports = {
     new: newLog,
     index,
+    create
 }
 
 function newLog(req, res) {
@@ -24,3 +25,14 @@ function newLog(req, res) {
       })
     })
   }
+
+  function create(req, res){
+    for (let key in req.body) {
+        if (req.body[key] === '') delete req.body[key]
+    }
+    const log = new Log(req.body)
+    log.save(function(err) {
+    if (err){ return res.redirect('/logs/new')} 
+    res.redirect(`/logs/${log._id}`)
+  })
+}
