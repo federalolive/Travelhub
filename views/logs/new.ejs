@@ -1,6 +1,44 @@
 <%- include('../partials/header') %>
 
-
+<h1>Add New Travel Log Entry</h1>
+<form id="new form" action="/logs" method="POST">
+    <label>Title:</label>
+    <input type="text" name="Name of Trip">
+        <br>
+        <br>
+    <label>Destination:</label>
+    <input type="text" name="Name of Destination">
+        <br>
+        <br>
+    <label>Description</label>
+    <textarea rows="5" cols="35" placeholder="Description of Travel"></textarea>
+        <br>
+        <br>
+    <label>Comments</label>
+    <textarea rows="5" cols="35" placeholder="Enter Your Personal Remarks About the Trip"></textarea>
+        <br>
+        <br>
+    <label>Rating</label>
+        <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+        <br>
+        <br>
+        <label>Reference Date of Trip: <input type="date" name="departs">
+        </label>
+        <br>
+        <br>
+        <input type="submit" value="Add Log Entry">
+</form>
 
 
 

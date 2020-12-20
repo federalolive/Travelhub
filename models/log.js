@@ -6,6 +6,7 @@ const logSchema = new Schema({
       type: String,
       required: true,
     },
+    destination: String,
     description: String,
     comments: String,
     image: String,
