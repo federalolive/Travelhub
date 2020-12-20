@@ -4,7 +4,8 @@ const axios = require('axios')
 module.exports = {
     new: newLog,
     index,
-    create
+    create,
+    show
 }
 
 function newLog(req, res) {
@@ -36,3 +37,4 @@ function newLog(req, res) {
     res.redirect(`/logs/${log._id}`)
   })
 }
+
