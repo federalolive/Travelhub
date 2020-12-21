@@ -3,7 +3,7 @@ const router = express.Router();
 const placesCtrl = require('../controllers/places');
 
 
-router.get('/places', isLoggedIn, placesCtrl.index)
+router.get('/', isLoggedIn, placesCtrl.index)
 router.get('/places/:id', isLoggedIn, placesCtrl.getPlace)
 router.post('/places', isLoggedIn, placesCtrl.addPlace)
 

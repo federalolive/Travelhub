@@ -1,36 +1,12 @@
-<%- include('../partials/header') %>
+mapboxgl.accessToken = 'pk,eyJ1IjoiZmVkZXJhbG9saXZlIiwiYSI6ImNraXE2ZjM0bDFldWgycXBmZHNmczJvbjkifQ.41LdKiQObM-Lk8WvVG6ozg';
 
-
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
-<link
-rel="stylesheet"
-href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
-type="text/css"
-/>
-<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
-<div id="map"></div>
- 
-<script>
-	mapboxgl.accessToken = 'pk.eyJ1IjoiZmVkZXJhbG9saXZlIiwiYSI6ImNraXE2ZjM0bDFldWgycXBmZHNmczJvbjkifQ.41LdKiQObM-Lk8WvVG6ozg';
-var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/federalolive/ckiq6lhcn0hve18n6dji0pt75',
-center: [-79.4512, 43.6568],
-zoom: 13
+const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/federalolive/ckiq6lhcn0hve18n6dji0pt75',
+    zoom: 1,
 });
- 
-map.addControl(
-new MapboxGeocoder({
-accessToken: mapboxgl.accessToken,
-mapboxgl: mapboxgl
-})
-);
-</script>
 
-<script>
-    // Get places from API
+// Get places from API
 async function getPlaces() {
     const res = await fetch('/api');
     const data = await res.json();
@@ -151,10 +127,3 @@ form.addEventListener('submit', addPlace);
 
 // Render places
 showMap();
-</script>
-  
-
-
-<%- include('../partials/footer') %>
-
-// <!-- mapbox://styles/federalolive/ckiq6lhcn0hve18n6dji0pt75 -->

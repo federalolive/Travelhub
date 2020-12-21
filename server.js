@@ -26,6 +26,7 @@ const logsRouter = require("./routes/logs")
 const commentsRouter = require('./routes/comments')
 
 
+
 const app = express();
 
 // view engine setup
@@ -39,6 +40,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
 
 
 // passport middleware
@@ -59,6 +61,7 @@ app.use("/places", placesRouter);
 app.use("/logs", logsRouter);
 app.use("/", commentsRouter);
 app.use("/users", usersRouter);
+app.use('/api', require('./routes/places'));
 
 
 // catch 404 and forward to error handler
