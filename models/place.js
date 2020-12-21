@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const geoCoder = require('geocoder');
+const geoCoder = require('../utils/geocoder');
 
-const placeSchema = new mongoose.Schema({
+const PlaceSchema = new mongoose.Schema({
     address: {
         type: String,
         required: [true, 'Please add an address']
@@ -24,7 +24,7 @@ const placeSchema = new mongoose.Schema({
 });
 
 // Before saving, convert address to geoCode
-placeSchema.pre('save', async function(next) {
+PlaceSchema.pre('save', async function(next) {
     const loc = await geoCoder.geocode(this.address);
     this.location = {
         type: 'Point',
@@ -37,4 +37,4 @@ placeSchema.pre('save', async function(next) {
     next();
 });
 
-module.exports = mongoose.model('Place', placeSchema);
+module.exports = mongoose.model('Place', PlaceSchema);

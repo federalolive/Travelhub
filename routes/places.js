@@ -1,8 +1,10 @@
-const router = require("express").Router();
-const placesCtrl = require('../controllers/places')
+const express = require('express');
+const router = express.Router();
+const placesCtrl = require('../controllers/places');
 
-router.get('/', isLoggedIn, placesCtrl.index)
-router.get('/places', isLoggedIn, placesCtrl.getPlace)
+
+router.get('/places', isLoggedIn, placesCtrl.index)
+router.get('/places/:id', isLoggedIn, placesCtrl.getPlace)
 router.post('/places', isLoggedIn, placesCtrl.addPlace)
 
 

@@ -19,6 +19,7 @@ require("./config/passport");
 
 // require routes
 const indexRouter = require("./routes/index");
+const usersRouter = require('./routes/users')
 const authRouter = require("./routes/auth");
 const placesRouter = require("./routes/places")
 const logsRouter = require("./routes/logs")
@@ -56,7 +57,8 @@ app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/places", placesRouter);
 app.use("/logs", logsRouter);
-app.use("/", commentsRouter)
+app.use("/", commentsRouter);
+app.use("/users", usersRouter);
 
 
 // catch 404 and forward to error handler

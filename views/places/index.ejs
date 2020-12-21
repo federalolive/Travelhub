@@ -1,77 +1,58 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset=utf-8 />
-<title>Leaflet Draw</title>
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
-<style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Visited Places</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet' />
+    
 </head>
 <body>
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.4.10/leaflet.draw.css' rel='stylesheet' />
-<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.4.10/leaflet.draw.js'></script>
-
-<div id='map'></div>
-
+    <div id='map' style='width: 400px; height: 300px;'></div>
 <script>
-L.mapbox.accessToken = 'pk.eyJ1IjoiZmVkZXJhbG9saXZlIiwiYSI6ImNraXE2ZjM0bDFldWgycXBmZHNmczJvbjkifQ.41LdKiQObM-Lk8WvVG6ozg';
-  var map = L.mapbox.map('map')
-      .setView([38.89399, -77.03659], 17)
-      .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
-
-  var featureGroup = L.featureGroup().addTo(map);
-
-  // Define circle options
-  // http://leafletjs.com/reference.html#circle
-  var circle_options = {
-      color: '#fff',      // Stroke color
-      opacity: 1,         // Stroke opacity
-      weight: 10,         // Stroke weight
-      fillColor: '#000',  // Fill color
-      fillOpacity: 0.6    // Fill opacity
-  };
-
-  var circle_one = L.circle([38.89415, -77.03738], 20, circle_options).addTo(featureGroup);
-  var circle_two = L.circle([38.89415, -77.03578], 20, circle_options).addTo(featureGroup);
-
-  // Create array of lat,lon points
-  var line_points = [
-      [38.893596444352134, -77.0381498336792],
-      [38.89337933372204, -77.03792452812195],
-      [38.89316222242831, -77.03761339187622],
-      [38.893028615148424, -77.03731298446655],
-      [38.892920059048464, -77.03691601753235],
-      [38.892903358095296, -77.03637957572937],
-      [38.89301191422077, -77.03592896461487],
-      [38.89316222242831, -77.03549981117249],
-      [38.89340438498248, -77.03514575958252],
-      [38.893596444352134, -77.0349633693695]
-  ];
-
-  // Define polyline options
-  // http://leafletjs.com/reference.html#polyline
-  var polyline_options = {
-      color: '#000'
-  };
-
-  // Defining a polygon here instead of a polyline will connect the
-  // endpoints and fill the path.
-  // http://leafletjs.com/reference.html#polygon
-  var polyline = L.polyline(line_points, polyline_options).addTo(featureGroup);
-
-  var drawControl = new L.Control.Draw({
-    edit: {
-      featureGroup: featureGroup
-    }
-  }).addTo(map);
-
-  map.on('draw:created', function(e) {
-      featureGroup.addLayer(e.layer);
-  });
+mapboxgl.accessToken = 'pk.eyJ1IjoiZmVkZXJhbG9saXZlIiwiYSI6ImNraXE2ZjM0bDFldWgycXBmZHNmczJvbjkifQ.41LdKiQObM-Lk8WvVG6ozg';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+center: [-74.5, 40], // starting position [lng, lat]
+zoom: 9 // starting zoom
+});
 </script>
+    <section style="height: 30vh;">
+        <section class="hero is-primary">
+            <div class="hero-body" style="padding: 1.5rem;">
+            <div class="container">
+                <h1 class="title" style="margin-bottom: 40px;">
+                    <i class="fas fa-globe-americas"></i>
+                    Visited Places
+                </h1>
+                <p class="subtitle">
+                    Below you will find an user generated map of visited places. 
+                    <br>Where have you been to?
+                </p>
+            </div>
+            </div>
+        </section>
+        <section class="container-fluid has-background-primary" style="height:100%;">
+            <form id="form">
+                <div class="container" style="display: flex;">
+                    <div class="control has-icons-left" style="width:100%;">
+                        <input id="place" class="input is-medium is-rounded" type="text" placeholder="Where have you been to?">
+                        <span class="icon is-left">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </span>
+                    </div>
+                    <button type="submit" style="margin-left:15px; margin-bottom:30px;" class="button is-primary is-inverted is-rounded is-outlined is-medium">
+                        Add Place!
+                    </button>
+                </div>
+            </form> 
+        </section>
+    </section>
+      <section class="container-fluid has-background-black">
+          <div id="map" style="height: 70vh;"></div>
+      </section>
+      <script src="./js/app.js"></script>
 </body>
 </html>
