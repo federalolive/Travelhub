@@ -40,10 +40,18 @@ function newLog(req, res) {
   })
 }
 
-    function show(req, res) {
-  Log.findById(req.params.id,  function(err, log) {
-    console.log(log)
-    res.render('logs/show', {title: 'Log Entry', user:req.user, log})
+function show(req, res) {
+  User.findById(req.params.id)
+  .then((userInfo) => {
+    Log.find(userInfo._id)
+    .then((logs) => {
+      res.render("users/show", {
+        title: "User Details",
+        userInfo,
+        user: req.user,
+        logs
+      })
+    })
   })
 }
 
