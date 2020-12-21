@@ -10,7 +10,6 @@ const commentSchema = new Schema(
     timestamps: true,
   }
 );
-
 const logSchema = new Schema({
     title: {
       type: String,
