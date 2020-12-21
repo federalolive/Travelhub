@@ -5,7 +5,8 @@ module.exports = {
     new: newLog,
     index,
     create,
-    show
+    show,
+    delete: deleteLog
 }
 
 function newLog(req, res) {
@@ -43,5 +44,11 @@ function newLog(req, res) {
   Log.findById(req.params.id,  function(err, log) {
     console.log(log)
     res.render('logs/show', {title: 'Log Entry', user:req.user, log})
+  })
+}
+
+function deleteLog(req, res){
+  Log.findByIdAndDelete(req.params.id, function(err, log){
+      res.redirect('/logs')
   })
 }
