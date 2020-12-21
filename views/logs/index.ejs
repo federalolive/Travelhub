@@ -2,7 +2,7 @@
 
 <h2>Travel Log Entries</h2>
 
-<% logs.forEach(log => { %>
+<!-- <% logs.forEach(log => { %>
     <div class="card" style="width: 18rem;"></div>
     <!-- INSERT CODE FOR IMAGE HERE ONCE THAT CODE HAS BEEN WRITTEN -->
     <div class="card-body">
@@ -12,6 +12,33 @@
         <a href="/logs/<%= log._id %>" class="btn btn-primary">Details</a>
     </div>
   </div>
-<% }) %>
+<% }) %> -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Destination</th>
+      <th>Date</th>
+      <th>Details</th>
+      <th>Delete Log</th>
+    </tr>
+  </thead>
+  <% logs.forEach(function(l) { %>
+      <tr>
+        <!-- <td><%= l.image %></td> -->
+        <td><%= l.title %></td>
+        <td><%= l.destination %></td>
+        <td><%= l.visitDate %></td>
+        <td><a href="/logs/<%= l._id %>">DETAILS</a></td>
+        <td>
+          <form action="logs/<%=l._id%>?_method=DELETE" class='delete-form' method="POST">
+              <button type='submit'>X</button>
+          </form>
+      </td>
+  </tr>
+<% }) %> 
+</tbody>
+</table>
 
 <%- include('../partials/footer') %>
