@@ -30,7 +30,7 @@ Back end database to collect logs and display them to browser. Users can add or 
 * Heroku
 * Google Dev Console
 
-# Planned Future Release
+# Planned Future Release - Coming VERY SOON
 I will be using React in order to create a more responsive front end experiance as having used the API's really made it difficult to style the page. By using React it will also allow me to get closer to my original vision of the app. Users will eventually be able to use the map as the primary hub. 
 
 ## Personal Thoughts
