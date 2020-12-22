@@ -21,8 +21,9 @@
         <td><a href="/logs/<%= l._id %>">DETAILS</a></td>
         <td>
           <form action="logs/<%=l._id%>?_method=DELETE" class='delete-form' method="POST">
-              <button type='submit'>X</button>
+            <button type='submit'>X</button>
           </form>
+            <form action="logs/<%=l._id%>?_method=PUT" class='update-form' method="POST"><button type="submit">Submit</button></form>
       </td>
   </tr>
 <% }) %> 
