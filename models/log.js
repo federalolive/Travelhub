@@ -28,7 +28,7 @@ const logSchema = new Schema({
     },
     visitDate: {
       required: true,
-      type: Date, default:() => Date.now() + 365*24*60*60*1000
+      type: Date, default:() => Date.now()
     },
     comments: [commentSchema]
   }, {

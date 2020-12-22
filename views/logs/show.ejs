@@ -12,20 +12,40 @@
     <div><%= log.description %></div>
     </section>
 
-  
+    <h2>Comments</h2>
+    <form id="add-comment-form" method="POST" action="/logs/<%= log._id %>/comments">
+      <label>Comments:</label>
+      <textarea name="content"></textarea>
+      </select>
+      <input type="submit" value="Add Review">
+    </form>
+    
+    <% if (log.comments.length) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>commenterPhoto</th>
+            <th>commenter</th>
+            <th>content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% let total = 0 %>
+          <% log.comments.forEach(function(c) { %>
+            <tr>
+              <td><%= c.createdAt.toLocaleDateString() %></td>
+              <td><%= c.commenterPhoto %></td>
+              <td><%= c.commenter %></td>
+              <td><%= c.content %></td>
+            </tr>
+          <% }); %>
+          <tr>
+            <td colspan="2"></td>
+            <td><strong><%= (total / log.comments.length).toFixed(1) %></strong></td>
+          </tr>
+        </tbody>
+      </table>
+    <% } %>
+            <%- include('../partials/footer') %>
 
-   <% let total = 0 %>
-           <% log.comments.forEach(c => { %>
-             <% total+= c.content %>
-             <p><%= c.content %> - <img width="20" id="commenterPhoto" src="<%= c.commenterPhoto %>" alt=""> <%= c.commenter %></p>
-             <p><%= c.content %></p>
-           <% }) %>
-           <p>Comments: <%= (total / log.comments.length).toFixed(2) %></p>
-           <% if (!log.comments.some(c => {return c.commenter === user.name})) { %>
-             <form action="/logs/<%= log._id %>/comments" method="POST">
-               <div class="form-group">
-                 <textarea class="form-control" name="content" style="width: 18rem;" id="exampleFormControlTextarea1" placeholder="Leave a Comment" rows="3"></textarea>
-               </div>
-               <% } %>
-
-<%- include('../partials/footer') %> 
