@@ -33,13 +33,18 @@ function index(req, res) {
   
   function show(req, res) {
     User.findById(req.params.id)
+    .then((userInfo) => {
+      Log.find(userInfo._id)
+      .then((logs) => {
         res.render("users/show", {
           title: "User Details",
           userInfo,
           user: req.user,
-          games
+          logs
         })
-      }
+      })
+    })
+  }
     
   
   function addFriend(req, res) {

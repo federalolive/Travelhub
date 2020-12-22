@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+
 const commentSchema = new Schema(
   {
     commenter: String,
@@ -10,6 +11,7 @@ const commentSchema = new Schema(
     timestamps: true,
   }
 );
+
 const logSchema = new Schema({
     title: {
       type: String,
@@ -28,6 +30,7 @@ const logSchema = new Schema({
       required: true,
       type: Date, default:() => Date.now() + 365*24*60*60*1000
     },
+    comments: [commentSchema]
   }, {
     timestamps: true,
   });

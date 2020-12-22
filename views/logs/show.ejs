@@ -8,48 +8,21 @@
     <div><%= log.destination %></div>
     <div>Reference Date of Trip: </div>
     <div><%= log.visitDate %></div>
-    <div>Destination: </div>
-    <div><%= log.destination %></div>
-    <div>Description: </div>
+    <div>Description </div>
     <div><%= log.description %></div>
     </section>
 
-    <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Destination</th>
-            <th>Date</th>
-            <th>Details</th>
-            <th>Delete Log</th>
-          </tr>
-        </thead>
-        <% logs.forEach(function(l) { %>
-            <tr>
-              <!-- <td><%= l.image %></td> -->
-              <td><%= l.title %></td>
-              <td><%= l.destination %></td>
-              <td><%= l.visitDate %></td>
-              <td><a href="/logs/<%= l._id %>">DETAILS</a></td>
-              <td>
-                <form action="logs/<%=l._id%>?_method=DELETE" class='delete-form' method="POST">
-                    <button type='submit'>X</button>
-                </form>
-            </td>
-        </tr>
-      <% }) %> 
-    </tbody>
-  </table>
+  
 
    <% let total = 0 %>
-           <% comments.forEach(r => { %>
+           <% log.comments.forEach(c => { %>
              <% total+= c.content %>
              <p><%= c.content %> - <img width="20" id="commenterPhoto" src="<%= c.commenterPhoto %>" alt=""> <%= c.commenter %></p>
              <p><%= c.content %></p>
            <% }) %>
-           <p>Comments: <%= (total / comments.length).toFixed(2) %></p>
-           <% if (!comments.some(u => {return c.commenter === user.name}) (u => {return u.email === user.email})) { %>
-             <form action="/logs/<%= logId %>/comments" method="POST">
+           <p>Comments: <%= (total / log.comments.length).toFixed(2) %></p>
+           <% if (!log.comments.some(c => {return c.commenter === user.name})) { %>
+             <form action="/logs/<%= log._id %>/comments" method="POST">
                <div class="form-group">
                  <textarea class="form-control" name="content" style="width: 18rem;" id="exampleFormControlTextarea1" placeholder="Leave a Comment" rows="3"></textarea>
                </div>

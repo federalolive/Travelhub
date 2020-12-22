@@ -6,7 +6,8 @@ module.exports = {
     index,
     create,
     show,
-    delete: deleteLog
+    delete: deleteLog,
+    addToLog
 }
 
 function newLog(req, res) {
@@ -32,31 +33,33 @@ function newLog(req, res) {
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key]
     }
-    const log = new Log(req.body)
-    console.log(log)
-    log.save(function(err) {
-    if (err){ console.log(err) }
-    res.redirect(`/logs/${log._id}`)
-  })
-}
+    Log.create(req.body) 
+    .then((log) => res.redirect(`/logs/${log._id}`))
+  }
+    
 
 function show(req, res) {
-  User.findById(req.params.id)
-  .then((userInfo) => {
-    Log.find(userInfo._id)
-    .then((logs) => {
-      res.render("users/show", {
-        title: "User Details",
-        userInfo,
-        user: req.user,
-        logs
-      })
-    })
+  Log.findById(req.params.id)
+  .populate('comment')
+  .then((log) => {
+    res.render('logs/show', {title: 'Log Entry', log, user: req.user})
+  })
+  .catch((err) => {
+    console.log(err)
   })
 }
 
 function deleteLog(req, res){
   Log.findByIdAndDelete(req.params.id, function(err, log){
       res.redirect('/logs')
+  })
+}
+
+function addToLog(req, res) {
+  Log.findById(req.params.id, function(err, log) {
+    log.cast.push(req.body.performerId)
+    log.save(function(err) {
+      res.redirect(`/logs/${log._id}`)
+    })
   })
 }
