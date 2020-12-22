@@ -14,25 +14,58 @@
   
 
 <body>
-    <nav>
-    <ul>
-        <a href="/">HOME</a>
-        <a href="/logs/new" <%- title === 'New Log Entry' ? 'class="active"' : '' %>>ADD NEW ENTRY</a>
-        <a href="/logs" <%- title === 'All Trips' ? 'class="active"' : '' %>>ALL TRAVEL LOGS</a>
-        <a href="/places" <%- title === '' ? 'class="active"' : '' %>>MAP</a>
-        <a href="/users" <%- title === 'Users List' ? 'class="active"' : '' %>>USERS LIST</a>
-    </ul>
-      <ul>
-        <% if (user) { %>
-        <li>
-          <a href="/auth/logout">Log Out</a>
+    <nav class="navbar-super-awesome-but-crappy-nav-bar">
+      <img 
+        width="50"
+        id="genericTravelPic"
+        src="public/images/denise-jans-IJy2ZUex0-Y-unsplash.jpg"
+        alt=""
+      />
+
+<a class="navbar-brand" href="/">TRIPLYNX</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <% if (user) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/logs/new">Add </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logs">My Travel Logs Entries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/profile">My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users">User List</a>
+          </li>
+          <li class="nav-item">
+            <!-- 'From hell's heart I stab at thee; for hate's sake I spit my last breath at thee.' - Captain Ahab. /places is to White Whale as Captain Ahab is to me.  -->
+            <a class="nav-link" href="/places">Map</a>
+          </li>
         </li>
-        <% } else { %>
-        <li>
-          <a href="/auth/google">Login with Google</a>
-        </li>
-        <% } %>
-      </ul>
+        <li class="nav-item">
+          <img id="avatarPhoto" height="50" src="<%= user.avatar %>" alt="" />
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/logout">Log Out</a>
+          </li>
+          <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/auth/google">Login with Google</a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
     </nav>
   </body>
 </html>

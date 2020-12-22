@@ -7,7 +7,8 @@ module.exports = {
     create,
     show,
     delete: deleteLog,
-    addToLog
+    addToLog,
+    edit
 }
 
 function newLog(req, res) {
@@ -63,3 +64,11 @@ function addToLog(req, res) {
     })
   })
 }
+
+function edit(req, res) {
+  Log.findById(req.params.id)
+  .then((log) => {
+    res.render('logs/edit', {title: 'Edit Log Entry', user: req.user, collection})
+    })
+  }
+
