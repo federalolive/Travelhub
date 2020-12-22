@@ -8,7 +8,8 @@ module.exports = {
     show,
     delete: deleteLog,
     addToLog,
-    edit
+    edit,
+    update
 }
 
 function newLog(req, res) {
@@ -72,3 +73,9 @@ function edit(req, res) {
     })
   }
 
+function update(req, res) {
+  Log.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then((log) => {
+    res.redirect('/logs/${log._id}')
+  })
+}
