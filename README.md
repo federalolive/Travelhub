@@ -5,3 +5,30 @@ TRIPLYNX is an app built for users who want an interactive platform to write, po
 ## Installation
 
 TRIPLYNX can be accessed through either [My GitHub](https://github.com/federalolive/Travelhub.git) or through [Heroku](https://git.heroku.com/triplynx.git)
+
+### Conceptual Wireframing/Trelo
+
+## Features
+
+Back end database to collect logs and display them to browser. Users can add or delete their logs as well as view logs of others. 
+
+## Technologies Used
+* Javascript
+* HTML
+* Node.js
+* Express
+* Mongoose
+* MongoDB Atlas
+* EJS
+* ENV
+* Google Oauth
+* Passport
+* CSS
+* Geocoder
+* Geocoder JSON
+* Mapbox GL JS
+* Heroku
+* Google Dev Console
+
+# Planned Future Release
+I will be using React in order to create a more responsive front end experiance as having used the API's really made it difficult to style the page. By using React it will also allow me to get closer to my original vision of the app.
