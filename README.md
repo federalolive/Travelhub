@@ -6,7 +6,8 @@ TRIPLYNX is an app built for users who want an interactive platform to write, po
 
 TRIPLYNX can be accessed through either [My GitHub](https://github.com/federalolive/Travelhub.git) or through [Heroku](https://triplynx.herokuapp.com/)
 
-### Conceptual Wireframing/Trelo
+### Conceptual Wireframing/Trelo 
+INSERT HERE
 
 ## Features
 
