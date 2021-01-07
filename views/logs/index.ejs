@@ -20,10 +20,12 @@
         <td><%= l.visitDate %></td>
         <td><a href="/logs/<%= l._id %>">DETAILS</a></td>
         <td>
+         <% if (l.postedBy == user._id) { %> 
           <form action="logs/<%=l._id%>?_method=DELETE" class='delete-form' method="POST">
             <button type='submit'>X</button>
           </form>
-            <form action="logs/<%=l._id%>?_method=PUT" class='update-form' method="POST"><button type="submit">Submit</button></form>
+            <form action="logs/<%=l._id%>?_method=PUT" class='update-form' method="POST"><button type="submit">Edit</button></form>
+            <% } %>  
       </td>
   </tr>
 <% }) %> 

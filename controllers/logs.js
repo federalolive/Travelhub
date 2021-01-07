@@ -23,6 +23,7 @@ function newLog(req, res) {
   function index(req, res) {
     Log.find({})
     .then((logs) => {
+      console.log(logs)
       res.render('logs/index', {
         title: "Travel Logs",
         user: req.user,
@@ -35,6 +36,7 @@ function newLog(req, res) {
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key]
     }
+    req.body.postedBy = req.user._id
     Log.create(req.body) 
     .then((log) => res.redirect(`/logs/${log._id}`))
   }

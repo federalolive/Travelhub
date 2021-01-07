@@ -30,7 +30,8 @@ const logSchema = new Schema({
       required: true,
       type: Date, default:() => Date.now()
     },
-    comments: [commentSchema]
+    comments: [commentSchema],
+    postedBy: String,
   }, {
     timestamps: true,
   });
