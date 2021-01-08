@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
-  <nav class="navbar">
-   
-
-<a class="navbar-brand" href="/">TRIPLYNX</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <% if (user) { %>
+  <nav>
+    <ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <img src="https://images.freeimages.com/images/large-previews/7ca/antique-compass-1241940.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+      <a class="navbar-brand" href="/">TRIPLYNX</a>
+      </a>
+    
+      <ul>
+    <% if (user) { %>
+        <ul class="nav justify-content-right">
           <li class="nav-item">
             <a class="nav-link" href="/logs/new">Add </a>
           </li>
@@ -37,20 +31,20 @@
           <li class="nav-item">
             <a class="nav-link" href="/users">User List</a>
           </li>
-        </li>
-        <li class="nav-item">
-          <img id="avatarPhoto" height="50" src="<%= user.avatar %>" alt="" />
+          </li>
+          <li class="nav-item">
+            <img id="avatarPhoto" height="50" src="<%= user.avatar %>" alt="" />
           <li class="nav-item">
             <a class="nav-link" href="/auth/logout">Log Out</a>
           </li>
-          <% } else { %>
+        </ul>
+        <% } else { %>
           <li class="nav-item">
             <a class="nav-link" href="/auth/google">Login with Google</a>
           </li>
-          <% } %>
-        </ul>
+    </ul>
+    <% } %>
+      </ul>
       </div>
-    </nav>
-  </body>
-
-
+  </nav>
+</body>
