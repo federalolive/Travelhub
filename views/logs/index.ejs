@@ -22,9 +22,10 @@
         <td>
          <% if (l.postedBy == user._id) { %> 
           <form action="logs/<%=l._id%>?_method=DELETE" class='delete-form' method="POST">
-            <button type='submit'>X</button>
+            <button type='submit' class="btn btn-primary">DELETE</button>
           </form>
-            <form action="logs/<%=l._id%>?_method=PUT" class='update-form' method="PUT"><button type="submit">Edit</button></form>
+          
+            <form action="logs/<%=l._id%>?_method=PUT" class='update-form' method="PUT"><button type="submit" class="btn btn-primary"></button>Edit</button></form>
             <% } %>  
       </td>
   </tr>
